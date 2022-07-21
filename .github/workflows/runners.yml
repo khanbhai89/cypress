@@ -21,6 +21,11 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+
+      - name: Clone supercharge docs repository
+        uses: actions/checkout@v2
+        with:
+          repository: inflectra/ui-test-automation-playground
       - name: Install e2e dependencies (with retries)
         run: npm ci || npm ci || npm ci
       - uses: cypress-io/github-action@v4
