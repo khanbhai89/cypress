@@ -23,15 +23,17 @@ jobs:
             ${{ runner.os }}-node-
       - name: Install e2e dependencies (with retries)
         run: npm ci || npm ci || npm ci
+
       - name: Clone UI Playground
         uses: actions/checkout@v2
         with:
           repository: inflectra/ui-test-automation-playground
           path: app
+      # Commented this code so that it doesn't run for long time but this represent the cloning and running the app
+      # - name: Run App
+      #   working-directory: ./app
+      #   run: npm install && node app.js
 
-      - name: Run App
-        working-directory: ./app
-        run: npm install && node app.js
       - uses: cypress-io/github-action@v4
         with:
           browser: chrome
