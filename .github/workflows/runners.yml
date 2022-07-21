@@ -1,0 +1,28 @@
+ame: Regression Test
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  Run-Tests-Staging:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.1.0
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Install e2e dependencies (with retries)
+        run: npm ci || npm ci || npm ci
+      - uses: cypress-io/github-action@v4
+        with:
+          browser: chrome
