@@ -8,7 +8,7 @@ executors:
 workflows:
   build:
     jobs:
-      - clone-app:
+      - run:
           command: "git clone https://github.com/Inflectra/ui-test-automation-playground.git"
       - cypress/run:
           executor: with-chrome
