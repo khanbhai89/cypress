@@ -21,17 +21,17 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-
+      - name: Install e2e dependencies (with retries)
+        run: npm ci || npm ci || npm ci
       - name: Clone UI Playground
         uses: actions/checkout@v2
         with:
           repository: inflectra/ui-test-automation-playground
           path: app
-      - name: Install e2e dependencies (with retries)
-        run: npm ci || npm ci || npm ci
+
       - name: Run App
         working-directory: ./app
-        run: node app.js
+        run: npm install && node app.js
       - uses: cypress-io/github-action@v4
         with:
           browser: chrome
