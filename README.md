@@ -1,11 +1,11 @@
-# Cypress Challenge
+# Demo Cypress
 
 Please go through github actions here: <https://github.com/khanbhai89/cypress/actions/workflows/runners.yml>
 App running has been commented on purpose and you can find all the details of this inside the files.
 
-## Original Case Study
+## Demo
 
-• candidate clones the repository to his local environment (git clone
+• Clone the repository to his local environment (git clone
 <https://github.com/Inflectra/ui-test-automation-playground.git>)
 
 • to setup up the UI Test Automation Playground in your local environment, follow the
